@@ -1,0 +1,23 @@
+name: My Workflow with Env Variables
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    env:
+      GREETING: "Hello"
+      TARGET: "World"
+
+    steps:
+      - name: Print greeting
+        run: echo "${{ env.GREETING }} ${env.TARGET}!"
+
+      - name: Print some GitHub context variables
+        run: |
+          echo "GitHub Repository: ${{ github.repository }}"
+          echo "GitHub Actor: ${{ github.actor }}"
+          echo "GitHub Workflow: ${{ github.workflow }}"
+          echo "GitHub SHA: ${{ github.sha }}"
